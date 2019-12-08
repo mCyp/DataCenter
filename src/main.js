@@ -1,8 +1,33 @@
 import Vue from 'vue'
 import App from './App.vue'
+import router from './router'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+import './assets/css/icon.css'
 
-Vue.config.productionTip = false
+Vue.use(ElementUI,{
+  size:'small'
+});
+
+router.beforeEach((to,from,next)=>{
+  document.title = `${to.meta.title} | vue-manage-system`;
+  const role = localStorage.getItem('ms-username');
+  if(!role && to.path !== '/login'){
+    next('/login');
+  }else if(to.meta.permission){
+    role === 'admin'?next():next('/403');
+  }else {
+    if(navigator.userAgent.indexOf('MSIE') > -1 && to.path === '/editor'){
+      Vue.prototype.$alert("您的浏览器太旧了，请使用IE9及以上版本或者谷歌浏览器！","浏览器通知",{
+        confirmButtonText:'确定'
+      });
+    }else {
+      next();
+    }
+  }
+});
 
 new Vue({
-  render: h => h(App),
-}).$mount('#app')
+  router:router,
+  render: h => h(App)
+}).$mount('#app');
