@@ -1,8 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Foo from './components/Foo.vue'
-import Bar from './components/Bar.vue'
-import Login from './components/page/Login.vue'
 
 Vue.use(VueRouter);
 
@@ -10,23 +7,25 @@ export default new VueRouter({
     mode: 'history',
     routes: [
         {
+          path:'/',
+          redirect:'/main'
+        },
+        {
             path: '/',
-            redirect: '/login'
+            component: ()=> import ('./components/common/Home.vue'),
+            meta:{title: '自述文件'},
+            children:[
+                {
+                    path:'/main',
+                    component:()=>import('./components/page/SearchContent.vue'),
+                    meta:{title:'系统首页'}
+                }
+            ]
         },
         {
             path: '/login',
-            component: Login,
+            component:()=>import('./components/page/Login.vue'),
             mata: {title: '登录'}
-        },
-        {
-            path: '/foo',
-            name: 'foo',
-            component: Foo
-        },
-        {
-            path: '/bar',
-            name: 'bar',
-            component: Bar
         }
     ]
 })

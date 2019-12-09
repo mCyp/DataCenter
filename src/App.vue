@@ -7,14 +7,7 @@
 <script>
 
 export default {
-  name: 'app',
-  data:function () {
-    return{
-      loginValue:true
-    }
-  },
-  components: {
-  }
+  name: 'app'
 }
 </script>
 <style>
