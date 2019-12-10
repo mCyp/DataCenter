@@ -7,7 +7,7 @@
         </div>
 
         <div class="header-tab">
-            <el-menu :default-active="activeIndex" mode="horizontal" @select="handleSelect">
+            <el-menu :default-active="activeIndex" mode="horizontal" @select="handleSelect" class="header-menu" >
                 <el-menu-item index="1">
                     <img src="../../assets/img/header-page-selected.png">
                     <span slot="title">首页</span>
@@ -75,6 +75,13 @@
         width: 36px;
         padding-right: 10px;
     }
+    /*.el-menu.el-menu--horizontal {
+        border: none;
+    }
+    .el-menu--horizontal>.el-menu-item.is-active{
+        border: none;
+    }*/
+
 
 
 

@@ -2,10 +2,12 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 import ElementUI from 'element-ui'
+import VeLine from 'v-charts/lib/line.common'
 import 'element-ui/lib/theme-chalk/index.css'
 import './assets/css/icon.css'
 import './assets/iconfont/iconfont.css'
 
+Vue.component(VeLine.name,VeLine);
 Vue.use(ElementUI,{
   size:'small'
 });
