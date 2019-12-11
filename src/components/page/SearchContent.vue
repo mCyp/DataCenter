@@ -1,19 +1,5 @@
 <template>
-<!--<div>
-    <el-tabs >
-        <el-tab-pane label="最新">
-            &lt;!&ndash;<list-card :news="news"></list-card>&ndash;&gt;
-
-            11
-        </el-tab-pane>
-        <el-tab-pane label="推荐">
-            222
-        </el-tab-pane>
-    </el-tabs>
-</div>-->
     <div class="main">
-
-
         <div class="banner">
             <h1 class="banner-title">信息汇聚 数据挖掘</h1>
             <p class="banner-desc">--推动互联网和人工智能发展的核心驱动力 </p>
@@ -21,19 +7,19 @@
         <div class="search-lay">
             <div class="search-lay1">
                 <div id="fakebox" >
-                    <el-input placholder="请输入内容" class="input-search"></el-input>
+                    <el-input placholder="请输入内容" class="input-search" v-model="searchContent" ></el-input>
                 </div>
-                <div class="search-button">
-                    <i class="iconfont el_icon_dsousuofangda icon"/>
+                <div class="search-button" v-on:click="searchSubmit(searchContent)">
+                    <i class="iconfont el_icon_dsousuo icon" />
                 </div>
             </div>
         </div>
 
-        <div>
+        <div class="footer-chart">
            <el-row>
-                <el-col :span="12" align="right" style="padding-right: 30px">
+                <el-col :span="12" align="right" style="padding-right: 10px">
                     <!-- 信息 -->
-                    <el-tabs :tab-position="newsPosition" style="width: 500px">
+                    <el-tabs :tab-position="newsPosition" style="width: 510px" align="center">
                         <el-tab-pane label="最新">
                             <list-card :news="news"></list-card>
                         </el-tab-pane>
@@ -41,8 +27,8 @@
                         </el-tab-pane>
                     </el-tabs>
                 </el-col>
-                <el-col :span="12" style="width: 500px;height: 400px;padding-left: 30px">
-                    <el-tabs :tab-position="newsPosition" >
+                <el-col :span="12" style="padding-left: 10px">
+                    <el-tabs :tab-position="newsPosition"  align="center" style="width: 510px;height: 400px;padding-left: 10px">
                         <el-tab-pane label="数据量" lazy="true">
                             <ChartCard></ChartCard>
                         </el-tab-pane>
@@ -54,8 +40,6 @@
                 </el-col>
             </el-row>
         </div>
-
-
     </div>
 </template>
 
@@ -68,6 +52,7 @@
         components: {ChartCard,ListCard},
         data(){
             return{
+                searchContent:"",
                 news:[
                     {name:'模型阻力数据',type:'TDM',date:'2019-8-12'},
                     {name:'模型操作性能数据',type: 'TDM',date:'2019-8-12'},
@@ -83,7 +68,12 @@
                     {name:'数据五',type: 'TDM',date:'2019-8-12'}
                 ]
             }
-        }
+        },
+        methods:{
+            searchSubmit(str){
+                this.$message.info("搜索内容为"+str)
+            }
+        },
     }
     // 动态tab
 
@@ -93,7 +83,7 @@
 <style scoped>
     .banner {
         background-image: url("../../assets/img/search-banner.png");
-        height: 200px;
+        height: 240px;
         color: white;
         background-size: 100% 100%;
         background-repeat: no-repeat;
@@ -102,15 +92,16 @@
     .banner-title {
         position: absolute;
         left: 132px;
-        top: 110px;
+        top: 130px;
         overflow: hidden;
     }
     .banner-desc {
         position: absolute;
         left: 150px;
-        top: 170px;
+        top: 190px;
     }
     .search-lay {
+        background-color: #F4F4F4;
         height: 100px;
         position: relative;
     }
@@ -128,8 +119,9 @@
     #fakebox {
         width: 400px;
         height: 44px;
+        background-color: white;
         border-radius: 22px 0 0 22px;
-        box-shadow: 0 1px 6px 0 rgba(32, 33, 36, .28);
+        box-shadow: 0 1px 4px 0 rgba(32, 33, 36, .28);
         box-sizing: content-box;
         cursor: text;
         font-size: 16px;
@@ -143,7 +135,7 @@
         margin: -22px 0 0 150px;
         border-radius: 0 22px 22px 0;
         box-sizing: border-box;
-        background: #0F3362;
+        background: #1652C4;
     }
     .input-search /deep/ .el-input__inner {
         height: 36px;
@@ -151,14 +143,19 @@
         margin-left: 10px;
         box-shadow: none;
         border: none;
+        background-color: transparent;
         display: block;
     }
     .icon {
         color: white;
         font-size: 20px;
+        font-weight: bold;
         margin: auto auto auto -10px;
         left: 45%;
         position: absolute;
+    }
+    .footer-chart{
+        background-color: #F4F4F4;
     }
 
    /* .tab-style /deep/ .el-tabs__item.is-active {

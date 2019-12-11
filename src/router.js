@@ -17,9 +17,14 @@ export default new VueRouter({
             children:[
                 {
                     path:'/main',
-                    component:()=>import('./components/page/SearchContent.vue'),
+                    component:()=>import('./components/page/DetailContent.vue'),
                     meta:{title:'系统首页'}
-                }
+                },
+                /*{
+                    path:'/search',
+                    component:()=>import('./components/page/DetailContent.Vue'),
+                    meta: {title: '搜索详情页'}
+                },*/
             ]
         },
         {
