@@ -5,20 +5,22 @@
             </el-input>
         </div>
         <div class="tab-lay">
-            <el-menu mode="horizontal" :default-active="1" background-color="#00000000" style="padding-left: 20px" >
+            <el-menu mode="horizontal"
+                     :default-active="1"
+                     background-color="#00000000"
+                     style="padding-left: 20px"
+                     @select="handleSelect"
+                     text-color="#5B7190"
+                     active-text-color="#1652C4">
                 <el-menu-item index="1">综合</el-menu-item>
-                <el-submenu index="2">
-                    <template slot="title">性能</template>
-                    <el-menu-item index="2-1">性能优先</el-menu-item>
-                    <el-menu-item index="2-2">性能倒序</el-menu-item>
-                    <el-menu-item index="2-3">其他</el-menu-item>
-                </el-submenu>
-                <el-submenu index="3">
-                    <template slot="title">来源</template>
-                    <el-menu-item index="3-1">水动力</el-menu-item>
-                    <el-menu-item index="3-2">环境</el-menu-item>
-                    <el-menu-item index="3-3">硬性</el-menu-item>
-                </el-submenu>
+                <el-menu-item index="2">
+                    <span>性能</span>
+                    <i class="el-icon-arrow-down"></i>
+                </el-menu-item>
+                <el-menu-item index="3">
+                    <span>来源</span>
+                    <i class="el-icon-arrow-down"></i>
+                </el-menu-item>
                 <el-menu-item index="4">
                     <span>时间</span>
                     <i class="el-icon-d-caret"></i>
@@ -27,11 +29,25 @@
         </div>
         <div>
             <el-row>
-                <el-col :span="10">
-
+                <el-col :span="20">
+                    <ul class="card-container">
+                        <li v-for="(item,index) in modelDataArray" :key="index" class="card-lay">
+                            <div class="card-lay1">
+                                <model-card v-bind:model-data="item" class="card"></model-card>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="page-lay">
+                        <el-pagination
+                                background
+                                layout="prev, pager, next"
+                                :total="1000"
+                                class="page">
+                        </el-pagination>
+                    </div>
                 </el-col>
-                <el-col :span="2">
-
+                <el-col :span="4">
+                    <div>文档管理</div>
                 </el-col>
             </el-row>
         </div>
@@ -39,30 +55,101 @@
 </template>
 
 <script>
+    import logo from '../../assets/logo.png'
+    import ModelCard from "@/components/common/ModelCard";
+
     export default {
         name: "DetailContent",
-        data(){
-            return{
-                searchName:'',
+        data() {
+            return {
+                searchName: '',
+                modelDataArray: [
+                    {
+                        name: 'XX模型 阻力数据',
+                        date: '2019.05',
+                        type: '水动力性能',
+                        source: 'TDM系统',
+                        imgUrl: logo
+                    },
+                    {
+                        name: 'XX模型 阻力数据',
+                        date: '2019.05',
+                        type: '水动力性能',
+                        source: 'TDM系统',
+                        imgUrl: logo
+                    },
+                    {
+                        name: 'XX模型 阻力数据',
+                        date: '2019.05',
+                        type: '水动力性能',
+                        source: 'TDM系统',
+                        imgUrl: logo
+                    },
+                    {
+                        name: 'XX模型 阻力数据',
+                        date: '2019.05',
+                        type: '水动力性能',
+                        source: 'TDM系统',
+                        imgUrl: logo
+                    },
+                    {
+                        name: 'XX模型 阻力数据',
+                        date: '2019.05',
+                        type: '水动力性能',
+                        source: 'TDM系统',
+                        imgUrl: logo
+                    },
+                    {
+                        name: 'XX模型 阻力数据',
+                        date: '2019.05',
+                        type: '水动力性能',
+                        source: 'TDM系统',
+                        imgUrl: logo
+                    },
+                    {
+                        name: 'XX模型 阻力数据',
+                        date: '2019.05',
+                        type: '水动力性能',
+                        source: 'TDM系统',
+                        imgUrl: logo
+                    },
+                    {
+                        name: 'XX模型 阻力数据',
+                        date: '2019.05',
+                        type: '水动力性能',
+                        source: 'TDM系统',
+                        imgUrl: logo
+                    },
+                ]
             }
+        },
+        methods: {
+            handleSelect(key, keyPath) {
+                console.log(key, keyPath);
+            }
+        },
+        components: {
+            ModelCard
         }
     }
 </script>
 
 <style scoped>
-    .detail-bg{
+    .detail-bg {
         background-color: #F4F4F4;
     }
-    .search-lay{
+
+    /*搜索框的样式设置*/
+    .search-lay {
         width: 100%;
-        height: 100px;
+        height: 80px;
         position: relative;
     }
-    .search-input{
+    .search-input {
         margin: auto;
         bottom: 0;
         top: 0;
-        left: 20px;
+        left: 40px;
         position: absolute;
         width: 500px;
         height: 40px;
@@ -85,14 +172,18 @@
         display: block;
         font-size: 14px;
     }
+
+    /* Tab的样式设置 */
     .tab-lay .el-menu-item {
+        width: 90px;
+        height: 40px;
         padding: 0 10px;
         font-size: 12px;
-        width: 90px;
         text-align: center;
         background-color: #F4F4F4;
     }
-    .tab-lay .el-menu--horizontal>.el-menu-item {
+
+    .tab-lay .el-menu--horizontal .el-menu-item {
         float: left;
         height: 40px;
         line-height: 40px;
@@ -100,10 +191,44 @@
         border-bottom: 2px solid transparent;
         color: #909399;
     }
-    .tab-lay .el-menu--horizontal>.el-submenu .el-submenu__title {
-        height: 40px;
-        line-height: 40px;
-        border-bottom: 2px solid transparent;
-        color: #909399;
+    /*网格布局样式设置*/
+    .card-container{
+        justify-content: space-around;
+        display: flex;
+        align-content: center;
+        flex-wrap: wrap;
+        margin: 20px 0 0 0;
     }
+    .card-lay {
+        width: 23%;
+        height: 260px;
+        display: inline-block;
+        overflow: hidden;
+    }
+    .card-lay1{
+        width: 90%;
+        height: 90%;
+    }
+    .card {
+        align-items: center;
+
+        cursor: pointer;
+    }
+    /*分页的属性*/
+    .page-lay{
+        width: 100%;
+        height: 60px;
+    }
+    .page{
+        text-align: center;
+        display: block;
+        margin: auto;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        position: relative;
+    }
+
+
 </style>
