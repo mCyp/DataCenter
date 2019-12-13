@@ -1,5 +1,6 @@
 <template>
-    <el-card shadow="hover" :body-style="{padding:'0 10px'}" class="card-body">
+    <el-card shadow="hover" :body-style="{padding:'0 10px'}" class="card-body"
+             v-on:click="dialogVisible=!dialogVisible">
         <img v-bind:src="modelData.imgUrl" alt="模型图片" class="img">
         <div>
             <h4>{{modelData.name}} <span class="date">{{modelData.date}}</span></h4>
@@ -12,14 +13,20 @@
 <script>
     export default {
         name: "ModelCard",
-        props: ['modelData']
+        props: ['modelData'],
+        data() {
+            return {
+            }
+        }
     }
 </script>
 
 <style scoped>
-    .card-body{
+    /*卡片主体*/
+    .card-body {
         height: 100%;
     }
+
     .img {
         width: 100%;
         height: 160px;
@@ -36,7 +43,8 @@
         font-size: 12px;
         color: #909399;
     }
-    .type{
+
+    .type {
         font-size: 12px;
         color: #909399;
         height: 20px;

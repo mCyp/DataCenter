@@ -6,6 +6,7 @@ import VeLine from 'v-charts/lib/line.common'
 import 'element-ui/lib/theme-chalk/index.css'
 import './assets/css/icon.css'
 import './assets/iconfont/iconfont.css'
+import './assets/iconfont/iconfont'
 
 Vue.component(VeLine.name,VeLine);
 Vue.use(ElementUI,{
