@@ -17,7 +17,7 @@ export default new VueRouter({
             children:[
                 {
                     path:'/main',
-                    component:()=>import('./components/page/DetailContent.vue'),
+                    component:()=>import('./components/page/DataUpload.vue'),
                     meta:{title:'系统首页'}
                 },
                 /*{
@@ -25,6 +25,11 @@ export default new VueRouter({
                     component:()=>import('./components/page/DetailContent.Vue'),
                     meta: {title: '搜索详情页'}
                 },*/
+                {
+                    path:'/data',
+                    component:()=>import('./components/page/DataContent.vue'),
+                    meta:{title:'系统首页'}
+                },
             ]
         },
         {

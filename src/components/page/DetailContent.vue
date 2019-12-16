@@ -153,7 +153,6 @@
     import IconSvg from "@/components/common/IconSvg";
     import ChartContent from "@/components/common/ChartContent";
 
-
     export default {
         name: "DetailContent",
         data() {
