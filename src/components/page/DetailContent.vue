@@ -258,7 +258,7 @@
                         type: 'doc'
                     },
                 ],
-                dialogVisible: true,
+                dialogVisible: false,
                 dataObj: {
                     date: '2019-05-02',
                     source: 'TDM系统',

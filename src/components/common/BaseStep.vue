@@ -5,17 +5,14 @@
                     class="col-container">
                 <div class="col-container-inner" v-on:click="handleTabClick(index)" v-if="index % 2 == 0">
                     <div>
-                        <el-card class="card-lay" :style="{background:tab.color,
-                         border:tab.selected?'4px solid white':'none',
-                         boxShadow:tab.selected?' 0 2px 12px 0 rgba(0, 0, 0, 0.2)':'none'
-                        }" shadow="hover">
+                        <el-card :class="getClassObj(index)" shadow="hover">
                             <IconSvg :icon-class="tab.iconName" class="icon"></IconSvg>
                         </el-card>
                     </div>
-                    <h6 class="text">{{tab.title}}</h6>
+                    <h6 class="text" :style="{color:(tabPos !== index?'#A6B2C1':'#404040')}">{{tab.title}}</h6>
                 </div>
                 <div v-else class="icon-lay">
-                    <i class="el-icon-caret-right icon"></i>
+                    <i class="el-icon-caret-right icon" :class="getIconClassObj(index)"></i>
                 </div>
             </el-col>
 
@@ -29,46 +26,41 @@
     export default {
         name: "BaseTab",
         components: {IconSvg},
+        props:{
+            tabPos: {
+                type: Number,
+                default: 0
+            },
+        },
         data() {
             return {
                 tabArray: [
                     {
-                        title: '水动力性能',
-                        status: '1',
-                        color: '#00CCA7',
+                        title: '上传',
                         iconName: 'el_icon_dyunduanshangchuan',
                         index: 1
                     },
                     {
                         title: 'xian',
-                        status: '1',
                     },
                     {
-                        title: '结构与强度新能',
-                        status: '1',
-                        color: '#00CCA7',
+                        title: '解析',
                         iconName: 'el_icon_dshujukanban',
                         index: 2
                     },
                     {
                         title: 'xian',
-                        status: '1',
                     },
                     {
-                        title: '综合隐身',
-                        status: '1',
-                        color: '#00CCA7',
+                        title: '配置',
                         iconName: 'el_icon_dgongnengdingyi',
                         index: 3
                     },
                     {
                         title: 'xian',
-                        status: '1',
                     },
                     {
-                        title: '环境数据',
-                        status: '1',
-                        color: '#F5FAFE',
+                        title: '完成',
                         iconName: 'el_icon_dduigou_kuai',
                         index: 4
                     },
@@ -77,28 +69,26 @@
         },
         methods: {
             handleTabClick: function (index) {
-                let len = this.tabArray.length;
-                let i = 0;
-                for (; i < len; i++) {
-                    this.tabArray[i].selected = i === index;
-                }
+                console.log(index);
             },
-
-        },
-        computed() {
-            return {
-                handleColor: function (status) {
-                    switch (status) {
-                        case '1':
-                            return '#00CCA7';
-                        case '2':
-                            return '#F5FAFE';
-                        default:
-                            return '#E91E63'
-                    }
-                }
+            getClassObj: function (index) {
+                if (index < 2 * this.tabPos) {
+                    return 'card-lay-success';
+                } else if (index === 2 * this.tabPos) {
+                    return 'card-lay-on';
+                } else
+                    return 'card-lay-wait';
+            },
+            getIconClassObj: function (index) {
+                if (index < 2 * this.tabPos) {
+                    return 'indicator-icon-success';
+                } else if (index === 2 * this.tabPos+1 && 2 * this.tabPos !== 8) {
+                    return 'indicator-icon-on';
+                } else
+                    return 'indicator-icon-wait';
             }
-        }
+        },
+        computed: {}
     }
 </script>
 
@@ -122,13 +112,29 @@
         margin: auto;
     }
 
-    .card-lay {
+    .card-lay-success {
         margin: auto;
         width: 76px;
         height: 76px;
-        border: 4px solid transparent;
-        border-radius: 80px;
-        background-color: dodgerblue;
+        border-radius: 76px;
+        background-color: #00CCA7;
+    }
+
+    .card-lay-on {
+        margin: auto;
+        width: 76px;
+        height: 76px;
+        border-radius: 76px;
+        background-color: #1652C4;
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.2);
+    }
+
+    .card-lay-wait {
+        margin: auto;
+        width: 76px;
+        height: 76px;
+        border-radius: 76px;
+        background-color: #F5FAFE;
     }
 
     .icon {
@@ -137,8 +143,26 @@
         color: white;
     }
 
+    .card-lay-wait .icon {
+        font-size: 36px;
+        margin: auto;
+        color: #DEE1E6;
+    }
+
     .icon-lay {
         margin: auto;
+    }
+
+    .indicator-icon-success {
+        color: #00CCA7;
+    }
+
+    .indicator-icon-on {
+        color: #1652C4;
+    }
+
+    .indicator-icon-wait {
+        color: #F5FAFE;
     }
 
     .text {

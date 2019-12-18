@@ -14,7 +14,6 @@
                     <el-menu :default-active="activeIndex"
                              mode="horizontal"
                              @select="handleSelect"
-                             @close="handleClose"
                              class="header-menu"
                              text-color="#5B7190"
                              active-text-color="#1652C4">
@@ -26,7 +25,7 @@
                             <img :src="dataUrl">
                             <span slot="title">数据群</span>
                         </el-menu-item>
-                        <el-menu-item index="3">
+                        <el-menu-item index="3" disabled>
                             <img :src="dmUrl">
                             <span slot="title">数据挖掘</span>
                         </el-menu-item>
@@ -115,10 +114,8 @@
                         break;
                 }
                 this.currentIndex = key;
+                this.$emit('select-tab',key);
                 console.log(key,keyPath);
-            },
-            handleClose(key, keyPath) {
-                console.log("close" + key, keyPath)
             }
         }
     }

@@ -27,40 +27,7 @@
     export default {
         name: "BaseTab",
         components: {IconSvg},
-        data() {
-            return {
-                tabArray: [
-                    {
-                        title: '水动力性能',
-                        selected: true,
-                        color: '#06BBFB',
-                        iconName: 'el_icon_dxiaolian',
-                        index: 1
-                    },
-                    {
-                        title: '结构与强度新能',
-                        selected: false,
-                        color: '#9AB9F9',
-                        iconName: 'el_icon_dshenjing',
-                        index: 2
-                    },
-                    {
-                        title: '综合隐身',
-                        selected: false,
-                        color: '#A9D3AB',
-                        iconName: 'el_icon_dmiwen',
-                        index: 3
-                    },
-                    {
-                        title: '环境数据',
-                        selected: false,
-                        color: '#92D9DB',
-                        iconName: 'el_icon_dguize',
-                        index: 4
-                    },
-                ]
-            }
-        },
+        props:['tabArray'],
         methods: {
             handleTabClick: function (index) {
                 let len = this.tabArray.length;
@@ -68,6 +35,8 @@
                 for (; i < len; i++) {
                     this.tabArray[i].selected = i === index;
                 }
+                console.log("current:"+index+typeof index);
+                this.$emit('tab-selected',index);
             }
         }
     }
@@ -101,14 +70,6 @@
         border-radius: 80px;
         background-color: dodgerblue;
     }
-
-    /*.card-lay:hover {
-        width: 76px;
-        height: 76px;
-        background-color: dodgerblue;
-        border-radius: 64px;
-        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.2);
-    }*/
 
     .icon {
         font-size: 36px;

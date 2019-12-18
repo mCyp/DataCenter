@@ -1,6 +1,6 @@
 <template>
     <div>
-        <base-tab></base-tab>
+        <base-tab :tab-array="tabArray"></base-tab>
         <div class="from-lay">
            <el-form ref="form" :model="form" label-width="80px">
                <el-form-item label="基础">
@@ -13,7 +13,7 @@
                </el-form-item>
                <el-form-item label="标签">
                    <el-checkbox-group v-model="form.tag">
-                       <el-checkbox v-for="(item,index) in tagArray" :key="index" :label="item"></el-checkbox>
+                       <el-checkbox v-for="(item,index) in tagArray" :key="index" :label="item" ></el-checkbox>
                    </el-checkbox-group>
                </el-form-item>
                <el-form-item label="分类">
@@ -53,12 +53,13 @@
             return{
                 baseNameArray:['水面','水下','空中'],
                 shipArray:['远望一号','蛟龙号','深海勇士'],
+                tagSelectedArray:[],
                 tagArray:['全部','快速性','耐波性','操纵性','稳性','自航','...'],
                 typeArray:['全部','物理实验','虚拟实验'],
                 form:{
                     baseName:'',
                     ship:'',
-                    tag:'',
+                    tag:[],
                     type:''
                 },
                 modelDataArray: [
@@ -98,6 +99,36 @@
                         imgUrl: logo
                     }
                 ],
+                tabArray: [
+                    {
+                        title: '水动力性能',
+                        selected: true,
+                        color: '#06BBFB',
+                        iconName: 'el_icon_dfuwudiqiu',
+                        index: 1
+                    },
+                    {
+                        title: '结构与强度新能',
+                        selected: false,
+                        color: '#9AB9F9',
+                        iconName: 'el_icon_dwumoxing',
+                        index: 2
+                    },
+                    {
+                        title: '综合隐身',
+                        selected: false,
+                        color: '#A9D3AB',
+                        iconName: 'el_icon_dmiwen',
+                        index: 3
+                    },
+                    {
+                        title: '环境数据',
+                        selected: false,
+                        color: '#92D9DB',
+                        iconName: 'el_icon_dchengshi',
+                        index: 4
+                    },
+                ]
             }
         },
         components:{

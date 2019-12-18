@@ -71,7 +71,8 @@
         },
         methods:{
             searchSubmit(str){
-                this.$message.info("搜索内容为"+str)
+                this.$message.info("搜索内容为"+str);
+                this.$router.push('/search')
             }
         },
     }
