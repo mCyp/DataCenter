@@ -148,7 +148,7 @@
 </template>
 
 <script>
-    import logo from '../../assets/logo.png'
+    import lab from "@/assets/img/lab.jpg";
     import ModelCard from "@/components/common/ModelCard";
     import IconSvg from "@/components/common/IconSvg";
     import ChartContent from "@/components/common/ChartContent";
@@ -164,56 +164,56 @@
                         date: '2019.05',
                         type: '水动力性能',
                         source: 'TDM系统',
-                        imgUrl: logo
+                        imgUrl: lab
                     },
                     {
                         name: 'XX模型 阻力数据',
                         date: '2019.05',
                         type: '水动力性能',
                         source: 'TDM系统',
-                        imgUrl: logo
+                        imgUrl: lab
                     },
                     {
                         name: 'XX模型 阻力数据',
                         date: '2019.05',
                         type: '水动力性能',
                         source: 'TDM系统',
-                        imgUrl: logo
+                        imgUrl: lab
                     },
                     {
                         name: 'XX模型 阻力数据',
                         date: '2019.05',
                         type: '水动力性能',
                         source: 'TDM系统',
-                        imgUrl: logo
+                        imgUrl: lab
                     },
                     {
                         name: 'XX模型 阻力数据',
                         date: '2019.05',
                         type: '水动力性能',
                         source: 'TDM系统',
-                        imgUrl: logo
+                        imgUrl: lab
                     },
                     {
                         name: 'XX模型 阻力数据',
                         date: '2019.05',
                         type: '水动力性能',
                         source: 'TDM系统',
-                        imgUrl: logo
+                        imgUrl: lab
                     },
                     {
                         name: 'XX模型 阻力数据',
                         date: '2019.05',
                         type: '水动力性能',
                         source: 'TDM系统',
-                        imgUrl: logo
+                        imgUrl: lab
                     },
                     {
                         name: 'XX模型 阻力数据',
                         date: '2019.05',
                         type: '水动力性能',
                         source: 'TDM系统',
-                        imgUrl: logo
+                        imgUrl: lab
                     },
                 ],
                 docDataArray: [
@@ -319,8 +319,10 @@
 
     /*搜索框的样式设置*/
     .search-lay {
+        margin-left: 20px;
         width: 100%;
         height: 80px;
+        box-sizing: border-box;
         position: relative;
     }
 
@@ -389,7 +391,7 @@
 
     .card-lay {
         width: 23%;
-        height: 260px;
+        height: 280px;
         display: inline-block;
         overflow: hidden;
     }

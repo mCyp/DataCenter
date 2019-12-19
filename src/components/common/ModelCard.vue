@@ -25,6 +25,8 @@
     /*卡片主体*/
     .card-body {
         height: 100%;
+        padding: 10px 0;
+        box-sizing: border-box;
     }
 
     .img {

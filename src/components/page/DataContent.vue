@@ -45,7 +45,7 @@
 
 <script>
     import BaseTab from "@/components/common/BaseTab";
-    import logo from "@/assets/logo.png";
+    import lab from "@/assets/img/lab.jpg";
     import ModelCard from "@/components/common/ModelCard";
     export default {
         name: "DataContent",
@@ -68,35 +68,35 @@
                         date: '2019.05',
                         type: '水动力性能',
                         source: 'TDM系统',
-                        imgUrl: logo
+                        imgUrl: lab
                     },
                     {
                         name: 'XX模型 阻力数据',
                         date: '2019.05',
                         type: '水动力性能',
                         source: 'TDM系统',
-                        imgUrl: logo
+                        imgUrl: lab
                     },
                     {
                         name: 'XX模型 阻力数据',
                         date: '2019.05',
                         type: '水动力性能',
                         source: 'TDM系统',
-                        imgUrl: logo
+                        imgUrl: lab
                     },
                     {
                         name: 'XX模型 阻力数据',
                         date: '2019.05',
                         type: '水动力性能',
                         source: 'TDM系统',
-                        imgUrl: logo
+                        imgUrl: lab
                     },
                     {
                         name: 'XX模型 阻力数据',
                         date: '2019.05',
                         type: '水动力性能',
                         source: 'TDM系统',
-                        imgUrl: logo
+                        imgUrl: lab
                     }
                 ],
                 tabArray: [
@@ -150,8 +150,8 @@
         flex-wrap: nowrap;
     }
     .card-lay {
-        width: 17%;
-        height: 260px;
+        width: 19%;
+        height: 280px;
         display: inline-block;
         overflow: hidden;
     }
